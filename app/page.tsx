@@ -1,10 +1,10 @@
 "use client";
-import { useCallback } from 'react';
-import Head from 'next/head';
 import styles from '@/app/styles/Home.module.css';
-import FHIR from "fhirclient";
 import { launchOptions } from "@/config/config";
 import IMeldRxLaunchData from '@/config/IMeldRxLaunchData';
+import FHIR from "fhirclient";
+import Head from 'next/head';
+import { useCallback } from 'react';
 
 export default function Page() {
   // When a button is pressed, tries to authorize based on the given configuration data...
@@ -12,10 +12,10 @@ export default function Page() {
     console.log(JSON.stringify(launchData));
     const fhirUrl = launchData.workspaceUrl;
     FHIR.oauth2.authorize({
-        clientId: launchData.clientId,
-        scope: launchData.scope,
-        redirectUri: launchData.redirectUrl,
-        iss: fhirUrl,
+      clientId: launchData.clientId,
+      scope: launchData.scope,
+      redirectUri: launchData.redirectUrl,
+      iss: fhirUrl,
     });
   }, [FHIR]);
 
@@ -28,25 +28,25 @@ export default function Page() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-          <div className="min-h-screen flex flex-col items-center bg-gray-50 p-6 relative overflow-hidden sm:py-12">
-            <img src="/images/darena-logo.png" className="rounded-lg" style={{ maxHeight: "50px" }} />
-            <h1 className="text-3xl font-bold text-center">Welcome to the Patient Sphere</h1>
-            <div className="mt-6"></div>
+        <div className="min-h-screen flex flex-col items-center bg-gray-50 p-6 relative overflow-hidden sm:py-12">
+          <img src="/images/darena-logo.png" className="rounded-lg" style={{ maxHeight: "50px" }} />
+          <h1 className="text-3xl font-bold text-center">Welcome to the Patient Sphere</h1>
+          <div className="mt-6"></div>
 
-            <div className="flex justify-center overflow-x-auto sm:rounded-lg my-2 w-3/4">
-              {/* Loop through launch configuration */}
-              {launchOptions.map((launchConfiguration: IMeldRxLaunchData, index: number) => {
-                  return (
-                    <LaunchButton
-                      key={`launch-button-${index}`}
-                      label="Launch with MeldRx"
-                      color="green"
-                      onClick={() => onLaunchClick(launchConfiguration)}
-                    />
-                  );
-              })}
-            </div>
+          <div className="flex justify-center overflow-x-auto sm:rounded-lg my-2 w-3/4">
+            {/* Loop through launch configuration */}
+            {launchOptions.map((launchConfiguration: IMeldRxLaunchData, index: number) => {
+              return (
+                <LaunchButton
+                  key={`launch-button-${index}`}
+                  label="Launch with MeldRx"
+                  color="green"
+                  onClick={() => onLaunchClick(launchConfiguration)}
+                />
+              );
+            })}
           </div>
+        </div>
       </main>
     </>
   )

@@ -1,0 +1,30 @@
+[
+ {
+      "id": "#23451",
+      "name": "John Bud",
+      "condition": "High blood pressure",
+      "imgSrc": "/vercel.svg",
+      "risk": { "level": "High", "severity": "high" }
+    },
+    {
+      "id": "#23452",
+      "name": "Kate Smith",
+      "condition": "Diabetes",
+      "imgSrc": "/vercel.svg",
+      "risk": { "level": "Low", "severity": "low" }
+    },
+    {
+      "id": "#23453",
+      "name": "Kareen Joy",
+      "condition": "Cancer",
+      "imgSrc": "/vercel.svg",
+      "risk": { "level": "Severe", "severity": "severe" }
+    },
+    {
+      "id": "#23454",
+      "name": "Rebecca Mogus",
+      "condition": "Low sugar",
+      "imgSrc": "/vercel.svg",
+      "risk": { "level": "Normal", "severity": "normal" }
+    }
+]
