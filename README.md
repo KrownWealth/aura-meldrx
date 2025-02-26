@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MeldRx Template App - Patient Viewer (NextJs)
 
 ## Getting Started
+Before launching the app ensure the following configuration steps have been followed:
+- app redirect url
+    - on https://app.meldrx.com
+    - go to `Apps` -> your application
+    - in the `Redirect URLs` section
+    - add the redirect url `http://localhost:{port}/login-callback` with the same port as this application, by default it's `3000`
+- workspace configuration
+    - if the workspace is `standalone`
+        - you will want to seed it with a patient that you can select to view in this app.
+        - go to https://app.meldrx.com/ccda?sample=sample1
+        - copy paste the ccda xml in to a new file such as `ccda.xml`
+        - go to `Workspaces` -> your workspace -> `Patients` -> click on `Import Data`
+        - select the `ccda.xml` file
+    - if the workspace is `linked` (to Epic or Cerner etc...)
+        - you will want to ignore MeldRx storage, and only use external.
+        - go to `Workspaces` -> your workspace -> `Settings` -> `Data Rules`
+        - in the `Bulk Updates` section, fill out the form to:
+            - `Trigger Action`: `Read`
+            - `Resource Type`: `Select All`
+            - `Target`: `External`
+            - press `Update Rules`
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Preqrequisites
+- NodeJs
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### App Setup/Installation
+- Run `npm install`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### App Configuration
+- Open `.env`
+- Replace the `NEXT_PUBLIC_MELDRX_CLIENT_ID` with the Client Id (aka "MeldRx App Id") of your **MeldRx App** (Get this from the "My Apps" page)
+- Replace the `NEXT_PUBLIC_MELDRX_WORKSPACE_URL` with the Workspace URL
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Run the App
+- `npm run dev`
